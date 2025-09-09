@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Update Todo - Todo App{% endblock %}
+
+{% block content %}
+<h4>Update Todo</h4>
+<form action="/update/{{ todo.sno }}" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="title" value="{{ todo.title }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <input type="text" class="form-control" name="desc" value="{{ todo.desc }}" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Update Todo</button>
+</form>
+{% endblock %}

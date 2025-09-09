@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Home - Todo App{% endblock %}
+
+{% block content %}
+<h4>Add New Todo</h4>
+<form action="/" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" name="title" id="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Description</label>
+    <input type="text" class="form-control" name="desc" id="desc" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Todo</button>
+</form>
+
+<h4 class="mt-4">Todo List</h4>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Created Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for site in allSite %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ site.title }}</td>
+      <td>{{ site.desc }}</td>
+      <td>{{ site.data_created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+      <td>
+        <a href="/update/{{ site.sno }}" class="btn btn-sm btn-warning">Update</a>
+        <a href="/delete/{{ site.sno }}" class="btn btn-sm btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
